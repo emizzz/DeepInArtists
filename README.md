@@ -1,4 +1,5 @@
 # DeepInArtists
+A Spotify based application that allows us to discover new artists, albums and songs.
 The app is built with Processing Programming Language.
 
 ## Getting Started
