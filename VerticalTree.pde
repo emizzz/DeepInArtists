@@ -84,7 +84,7 @@ class VerticalTree extends Tree {
       if (!mousePressed) {
         enableClick = true;                                                                    //avoid click events firing multiple times
       }
-      if (mousePressed && mouseButton == RIGHT && enableClick && selectedNode.mouseOnNode() && selectedNode.getTransparency() != 50) {            //mouse RIGHT pressed on node
+      if (mousePressed && mouseButton == RIGHT && enableClick && selectedNode.mouseOnNode() && selectedNode.getName()!=null && selectedNode.getTransparency() != 50) {      //mouse RIGHT pressed on node
 
         JSONArray albums = request.getAlbums(selectedNode.getId());
 
@@ -101,7 +101,7 @@ class VerticalTree extends Tree {
         enableClick = true;
       }
 
-      if (mousePressed && mouseButton == LEFT && enableClick && selectedNode.mouseOnNode()) {                         //mouse LEFT pressed on node 
+      if (mousePressed && mouseButton == LEFT && enableClick && selectedNode.mouseOnNode() && selectedNode.getName()!=null) {        //mouse LEFT pressed on node 
 
         if (selectedNode.getOutLinks().size() == 0 && selectedNode.getId().length()>0) {
 
@@ -121,7 +121,7 @@ class VerticalTree extends Tree {
       if (selectedNode.mouseOnNode()) {                                                                               //mouse over the node
 
         if (selectedNode.getTransparency() != 50) {                                                                   //if the node is hidden (with transparency) we couldn't see the name 
-          String sName = selectedNode.name;
+          String sName = (selectedNode.name != null) ? selectedNode.name : "";
           float sX =  selectedNode.getXPos();
           float sY =  selectedNode.getYPos();
 

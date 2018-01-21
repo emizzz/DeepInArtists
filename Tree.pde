@@ -32,20 +32,21 @@ class Tree {
     line(n1.getXPos(), n1.getYPos(), n2.getXPos(), n2.getYPos());
   }
   void addNodes(Node prevNode, JSONArray spotifyRequest, int limit, String type) {               //add nodes to the tree   
-
-    for (int i=0; i<limit; i++) {                                                                       
-      JSONObject song = spotifyRequest.getJSONObject(i);
-      PImage img=loadImage(song.getString("image"), "jpg");
-
-      Node newNode = new Node(0, 0);           
-      newNode.setName(song.getString("name"));                                                   //set information to the tree
-      newNode.setId(song.getString("id"));
-      newNode.setImg(img);
-
-      if (type=="vertical")  prevNode.setOutLinksNode(newNode);                                          
-      newNode.setInLinksNode(prevNode);
-
-      nodes.add(newNode);                                                                        //add the node to nodes
+    if (spotifyRequest.size()>0) {
+      for (int i=0; i<limit; i++) {                                                                       
+        JSONObject song = spotifyRequest.getJSONObject(i);
+        PImage img=loadImage(song.getString("image"), "jpg");
+  
+        Node newNode = new Node(0, 0);           
+        newNode.setName(song.getString("name"));                                                 //set information to the tree
+        newNode.setId(song.getString("id"));
+        newNode.setImg(img);
+  
+        if (type=="vertical")  prevNode.setOutLinksNode(newNode);                                          
+        newNode.setInLinksNode(prevNode);
+  
+        nodes.add(newNode);                                                                      //add the node to nodes
+      }
     }
   }
   void drawNodes() {

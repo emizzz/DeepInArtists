@@ -24,7 +24,6 @@ ZoomPan zoomer = new ZoomPan(this);                                             
 
 void setup() {
   fullScreen();
-  
   text = new Text();                                                                                                              
       
   zoomer.setMinZoomScale(0.8);                                                                             // set min zoom allowed
